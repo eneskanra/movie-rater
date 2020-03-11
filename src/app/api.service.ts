@@ -6,10 +6,10 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 })
 export class ApiService {
 
-  baseUrl = 'http://127.0.0.1:8000/rater/movies/';
+  baseUrl = 'http://127.0.0.1:8000/api/movies/';
   headers = new HttpHeaders({
     'Content-Type': 'application/json',
-    Authorization: 'Token 9b35c10144d4df2c48f22435005c15bc3154a7d8'
+    Authorization: 'Token 5d3486c9ebefaa56f26cc6b57031507137ba26e1'
   });
 
   constructor(
