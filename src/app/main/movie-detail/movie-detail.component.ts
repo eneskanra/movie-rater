@@ -14,5 +14,8 @@ export class MovieDetailComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  rateHover(rate) {
+    console.log(rate);
+  }
 
 }
