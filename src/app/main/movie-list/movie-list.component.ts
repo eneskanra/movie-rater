@@ -1,4 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { FaIconLibrary } from '@fortawesome/angular-fontawesome';// import { faEdit } from '@fortawesome/free-solid-svg-icons';
+import { faEdit , fas} from '@fortawesome/free-solid-svg-icons';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-movie-list',
@@ -10,7 +14,10 @@ export class MovieListComponent implements OnInit {
   @Input() movies = [];
   @Output() selectMovie = new EventEmitter();
 
-  constructor() { }
+  constructor(library: FaIconLibrary) {
+    library.addIconPacks(fas);
+    library.addIcons(faEdit, faTrash);
+   }
 
   ngOnInit(): void {
   }

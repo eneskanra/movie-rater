@@ -1,3 +1,5 @@
 <div *ngFor="let movie of movies" (click)="movieClicked(movie)">
     <h3>{{movie.title}}</h3>
+    <fa-icon icon="edit"></fa-icon>
+    <fa-icon [icon]="['fas', 'trash']"></fa-icon>
 </div>
