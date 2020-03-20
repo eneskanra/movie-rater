@@ -11,7 +11,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 const routes: Routes = [
-  {path: '', pathMatch: 'full', redirectTo: 'movies'}
+  {path: '', pathMatch: 'full', redirectTo: 'auth'}
 ];
 
 @NgModule({

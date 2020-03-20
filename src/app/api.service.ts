@@ -10,7 +10,7 @@ export class ApiService {
   baseUrl = 'http://127.0.0.1:8000/api/movies/';
   headers = new HttpHeaders({
     'Content-Type': 'application/json',
-    Authorization: 'Token 5d3486c9ebefaa56f26cc6b57031507137ba26e1'
+    Authorization: 'Token 8b6a407caa425cd1a8cdbe0b511a3bac1ad13cc7'
   });
 
   constructor(
@@ -23,6 +23,20 @@ export class ApiService {
 
   getMovie(id: number) {
     return this.httpClient.get<Movie>(`${this.baseUrl}${id}/`, {headers: this.headers});
+  }
+
+  createMovie(title: string, description: string) {
+    const body = JSON.stringify({title: title, description: description});
+    return this.httpClient.post(`${this.baseUrl}`, body, {headers: this.headers});
+  }
+
+  updateMovie(id: number, title: string, description: string) {
+    const body = JSON.stringify({title: title, description: description});
+    return this.httpClient.put(`${this.baseUrl}${id}/`, body, {headers: this.headers});
+  }
+
+  deleteMovie(id: number) {
+    return this.httpClient.delete(`${this.baseUrl}${id}/`, {headers: this.headers});
   }
 
   rateMovie(rate: number, movieId: number) {

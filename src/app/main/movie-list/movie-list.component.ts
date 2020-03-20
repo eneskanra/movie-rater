@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';// import { faEdit } from '@fortawesome/free-solid-svg-icons';
-import { faEdit , fas} from '@fortawesome/free-solid-svg-icons';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faEdit , faTrash, fas} from '@fortawesome/free-solid-svg-icons';
+import { Movie } from 'src/app/models/Movie';
 
 
 @Component({
@@ -11,8 +11,11 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 })
 export class MovieListComponent implements OnInit {
 
-  @Input() movies = [];
-  @Output() selectMovie = new EventEmitter();
+  @Input() movies: Movie[] = [];
+  @Output() selectMovie = new EventEmitter<Movie>();
+  @Output() editedMovie = new EventEmitter<Movie>();
+  @Output() createNewMovie = new EventEmitter();
+  @Output() deletedMovie = new EventEmitter<Movie>();
 
   constructor(library: FaIconLibrary) {
     library.addIconPacks(fas);
@@ -22,8 +25,20 @@ export class MovieListComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  movieClicked(movie) {
+  movieClicked(movie: Movie) {
     this.selectMovie.emit(movie)
+  }
+
+  editMovie(movie: Movie) {
+    this.editedMovie.emit(movie)
+  }
+
+  newMovie() {
+    this.createNewMovie.emit()
+  }
+
+  deleteMovie(movie: Movie) {
+    this.deletedMovie.emit(movie)
   }
 
 }
